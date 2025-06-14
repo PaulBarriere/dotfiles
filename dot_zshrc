@@ -1,0 +1,65 @@
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+    mkdir -p "$(dirname $ZINIR_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Source/ Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# ZSH syntax highlighting
+zinit light zsh-users/zsh-syntax-highlighting
+
+# ZSH autocompletion
+zinit light zsh-users/zsh-completions
+autoload -U compinit && compinit # Load autocompletions
+
+# ZSH auto suggestions
+zinit light zsh-users/zsh-autosuggestions
+
+# ZSH fzf tab
+zinit light Aloxaf/fzf-tab
+
+# Keybindings :
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+
+# History
+HISTSIZE=5000 # Set the number of commands in the history
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase # Erase duplicates
+setopt appendhistory # Append any command to the history file other than rewriting it
+setopt sharehistory # Share command accross all zshell session
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups # Use for avoiding dupplicates commands to show in history
+setopt hist_find_no_dups
+
+# Zoxide
+eval "$(zoxide init zsh  --cmd j)"
+
+# Completion style:
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Completion not case sensitive
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# Shell integrations
+eval "$(fzf --zsh)"
+
+# Starship Theme
+eval "$(starship init zsh)"
+
+# Alias
+alias vi=nvim
+alias ls='ls --color'
+alias ll='ls -la'
+
+# Env Variable :
+export XDG_STATE_HOME=$HOME/.local/state_rootless # This is done because distrobox makes the $HOME/.local/state a root directory.
