@@ -1,0 +1,6 @@
+[credential "https://{{ (keepassxc "edf_glab_token").UserName }}"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
+[user]
+	email = {{ (keepassxc "edf_email").Password }}
+  name = {{ (keepassxc "edf_email").UserName }}

@@ -1,0 +1,5 @@
+README.md
+{{- if eq .work_employer "" }}
+.config/proxy.env # only manage .work on work-laptop
+.config/glab-cli/private_config.yml
+{{- end }}

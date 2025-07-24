@@ -63,3 +63,9 @@ alias ll='ls -la'
 
 # Env Variable :
 export XDG_STATE_HOME=$HOME/.local/state_rootless # This is done because distrobox makes the $HOME/.local/state a root directory.
+
+{{- if eq .chezmoi.hostname "work-distrobox" }}
+set -a
+source ~/.config/proxy.env
+set +a
+{{- end }}

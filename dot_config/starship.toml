@@ -6,5 +6,7 @@ add_newline = true
 
 # GCLOUD
 [gcloud]
-format = '[$symbol$account(@$domain)(\($project\))]($style) '
+format = '[$symbol(@$domain)(\($project\))]($style) '
 style = 'bold yellow'
+
+# To Do alias
