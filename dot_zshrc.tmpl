@@ -69,3 +69,5 @@ set -a
 source ~/.config/proxy.env
 set +a
 {{- end }}
+
+export PATH=$PATH:$(go env GOPATH)/bin
