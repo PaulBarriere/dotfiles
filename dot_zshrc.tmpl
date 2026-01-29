@@ -63,11 +63,16 @@ alias ll='ls -la'
 
 # Env Variable :
 export XDG_STATE_HOME=$HOME/.local/state_rootless # This is done because distrobox makes the $HOME/.local/state a root directory.
+export EDITOR=nvim
 
-{{- if eq .chezmoi.hostname "work-distrobox" }}
 set -a
 source ~/.config/proxy.env
 set +a
-{{- end }}
 
 export PATH=$PATH:$(go env GOPATH)/bin
+
+# NPM for opencode and gemini cli
+export PATH=~/.npm-global/bin:$PATH
+export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/application_default_credentials.json
+export VERTEX_LOCATION=global
+export GOOGLE_CLOUD_PROJECT=prj-dpnt-qh9-exp-u05-64756
