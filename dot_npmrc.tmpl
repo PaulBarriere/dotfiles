@@ -1,0 +1,8 @@
+{{- if eq .work_employer "edf" }}
+email=paul-externe.barriere@edf.fr
+registry=https://si-devops-mirror.edf.fr/repository/registry.npmjs.org/
+@arom:registry=https://si-devops-repository.edf.fr/repository/atm-atom-npm-release/
+@arom-snapshot:registry=https://si-devops-repository.edf.fr/repository/atm-atom-npm-snapshot/
+prefix=~/.npm-global
+{{- else }}
+{{- end }}

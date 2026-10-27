@@ -1,0 +1,8 @@
+[user]
+	email = paulbarriere@noreply.codeberg.org
+	name = PaulBarriere
+	signingkey = 27B8493A0601BBBA
+
+[credential]
+	helper = store --file ~/.config/git/.codeberg-credentials
+	helper = cache --timeout 30000

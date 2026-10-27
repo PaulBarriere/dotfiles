@@ -1,0 +1,11 @@
+[includeIf "hasconfig:remote.*.url:https://si-devops-gitlab.edf.fr/**"]
+	path = ~/.config/git/config-edf
+
+[includeIf "hasconfig:remote.*.url:https://codeberg.org/**"]
+	path = ~/.config/git/config-berg
+
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+	path = ~/.config/git/config-github
+
+[commit]
+	gpgsign = true

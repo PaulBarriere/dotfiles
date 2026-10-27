@@ -1,0 +1,22 @@
+#!/bin/sh
+# Import the commit signing GPG keys (once per home). They are stored,
+# armored and passphrase protected, as attachments of the KeePassXC entry
+# "gpg_signing_keys".
+set -eu
+
+gpg --batch --import <<'KEY'
+{{ keepassxcAttachment "gpg_signing_keys" "gpg_edf.asc" }}
+KEY
+gpg --batch --import <<'KEY'
+{{ keepassxcAttachment "gpg_signing_keys" "gpg_codeberg.asc" }}
+KEY
+gpg --batch --import <<'KEY'
+{{ keepassxcAttachment "gpg_signing_keys" "gpg_github.asc" }}
+KEY
+
+# Trust our own keys (EDF GitLab, Codeberg, GitHub)
+gpg --import-ownertrust <<TRUST
+51EEF9346773ECEA4FF95BEA2A4B749D6A4084C2:6:
+CD3E0D688ABA74682016446627B8493A0601BBBA:6:
+783664815F15129B088E460534F5CA525EEEDC81:6:
+TRUST

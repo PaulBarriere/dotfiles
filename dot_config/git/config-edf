@@ -1,0 +1,8 @@
+[credential "https://si-devops-gitlab.edf.fr"]
+	helper =
+	helper = !/usr/bin/env glab auth git-credential
+
+[user]
+	email = paul-externe.barriere@edf.fr
+	name = Paul BARRIERE
+	signingkey = 2A4B749D6A4084C2
