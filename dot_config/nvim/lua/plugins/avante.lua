@@ -5,6 +5,9 @@
 return {
   {
     "yetone/avante.nvim",
+    -- The LazyVim extra builds with `make`, which needs cargo (Rust).
+    -- build.sh downloads the prebuilt native library from the GitHub release.
+    build = "bash ./build.sh",
     opts = {
       provider = "gemini-cli",
       acp_providers = {
