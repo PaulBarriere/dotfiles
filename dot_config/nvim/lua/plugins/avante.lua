@@ -8,6 +8,10 @@ return {
     -- The LazyVim extra builds with `make`, which needs cargo (Rust).
     -- build.sh downloads the prebuilt native library from the GitHub release.
     build = "bash ./build.sh",
+    -- Required by recent avante versions, missing from the LazyVim extra.
+    dependencies = {
+      { "ColinKennedy/mega.cmdparse", dependencies = { "ColinKennedy/mega.logging" } },
+    },
     opts = {
       provider = "gemini-cli",
       acp_providers = {
