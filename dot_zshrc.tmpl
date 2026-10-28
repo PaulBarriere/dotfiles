@@ -89,7 +89,7 @@ export PATH
 export PATH=~/.npm-global/bin:$PATH
 
 # Corporate CA certificates are in the system trust store of the image
-export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
+export NODE_EXTRA_CA_CERTS=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
 {{- if eq .work_employer "edf" }}
 
 # Gemini CLI
