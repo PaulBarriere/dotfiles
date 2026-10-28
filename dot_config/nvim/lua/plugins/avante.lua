@@ -1,17 +1,18 @@
 -- avante.nvim (enabled with the LazyVim extra "ai.avante")
--- Drives the official Claude Code through ACP (claude-agent-acp, installed in
--- the image), so it uses the Claude Code login (`claude` then `/login`).
--- The direct "claude" provider with auth_type = "max" gets 429 errors.
+-- Drives gemini-cli through ACP, with the gemini-cli Google login
+-- ("oauth-personal") and the project set in GOOGLE_CLOUD_PROJECT (.zshrc).
+-- Log in once by running `gemini` in a terminal.
 return {
   {
     "yetone/avante.nvim",
     opts = {
-      provider = "claude-code",
+      provider = "gemini-cli",
       acp_providers = {
-        ["claude-code"] = {
+        ["gemini-cli"] = {
+          args = { "--acp" },
+          auth_method = "oauth-personal",
           env = {
-            -- avante defaults to "bypassPermissions": ask before edits/commands
-            ACP_PERMISSION_MODE = "default",
+            GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT"),
           },
         },
       },

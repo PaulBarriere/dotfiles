@@ -94,6 +94,9 @@ export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
 
 # Gemini CLI
 export GOOGLE_CLOUD_PROJECT=prj-cedid-clf-prd-iad-64512
+
+# uv: use the system CA bundle, which trusts the EDF proxy
+export UV_NATIVE_TLS=1
 {{- end }}
 
 # Load Angular CLI autocompletion.
